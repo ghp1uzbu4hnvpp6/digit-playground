@@ -6,7 +6,6 @@
     <body>
         <div align="center">
             <h1>digit game!!!!!!!!!!!</h1>
-            <p>find them all.</p>
         </div>
 
         <div align="center">
@@ -15,13 +14,24 @@
         </div>
     </body>
     <script>
-        let a1=6,a2=9,a3=4,a4=2;
+        let a=[6,9,4,2];
         let att=1;
         document.getElementById('go1').addEventListener('click', () => {
-          if (att<=6) {
-              let d1=document.getElementById('inp1').value,d2=document.getElementById('inp2').value,d3=document.getElementById('inp3').value,d3=document.getElementById('inp3').value;
-          }
-          att+=1;
+            if (att<=6) {
+                let d=[document.getElementById('inp1').value,document.getElementById('inp2').value,document.getElementById('inp3').value,document.getElementById('inp4').value];
+                let cnt1=0,cnt2=0;
+                for (let i = 0; i < a.length; i++) {
+                    cnt1+=(a[i]==d[i]);
+                    if (a[i]!=d[i]) for (let j=0;j<d.length;j++) {
+                        if (a[i]==d[j]) {
+                            cnt2++;
+                            break;
+                        }
+                    }
+                }
+                document.getElementById("yogurt").innerHTML="Numbers that is correct and in correct place: "+toString(cnt1)+" Numbers that is correct and but is in the wrong place: "+toString(cnt2);
+            }
+            att+=1;
         });
     </script>
 </html>
