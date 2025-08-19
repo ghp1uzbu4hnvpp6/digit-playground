@@ -20,16 +20,23 @@
             if (att<=6) {
                 let d=[document.getElementById('inp1').value,document.getElementById('inp2').value,document.getElementById('inp3').value,document.getElementById('inp4').value];
                 let cnt1=0,cnt2=0;
+                let b=[0,0,0,0],b2=[0,0,0,0];
                 for (let i = 0; i < a.length; i++) {
                     cnt1+=(a[i]==d[i]);
-                    if (a[i]!=d[i]) for (let j=0;j<d.length;j++) {
-                        if (a[i]==d[j]) {
-                            cnt2++;
-                            break;
-                        }
+                    b[i]=1;
+                    b2[i]=1;
+                }
+                for (let i = 0; i < a.length; i++) {
+                    if (b[i]) continue;
+                    for (let j=0;j<d.length;j++) {
+                        if (b2[j]) continue;
+                        if (d[j]==a[i]) cnt2++,b2[j]=1;
                     }
                 }
-                document.getElementById("yogurt").innerHTML="Numbers that is correct and in correct place: "+cnt1.toString()+" Numbers that is correct and but is in the wrong place: "+cnt2.toString();
+                if (cnt1!=4) document.getElementById("yogurt").innerHTML="Numbers that is correct and in correct place: "+cnt1.toString()+" Numbers that is correct and but is in the wrong place: "+cnt2.toString();
+                else document.getElementById("yogurt").innerHTML="good boy";
+            } else {
+                document.getElementById("yogurt").innerHTML="you tried too many times cuh";
             }
             att+=1;
         });
