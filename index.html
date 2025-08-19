@@ -14,7 +14,12 @@
         </div>
     </body>
     <script>
-        let a=[6,9,4,2];
+        function rand(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        let a=[rand(0,9),rand(0,9),rand(0,9),rand(0,9)];
         let att=1;
         document.getElementById('go1').addEventListener('click', () => {
             if (att<=6) {
